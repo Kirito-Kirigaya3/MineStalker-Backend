@@ -2,6 +2,7 @@ package tracker
 
 import (
 	"fmt"
+	"log"
 	"teamacedia/minestalker/internal/db"
 	"teamacedia/minestalker/internal/models"
 	"time"
@@ -10,13 +11,13 @@ import (
 var previousState = map[string]map[int]map[string]bool{} // map[serverAddr][serverPort][playerName]bool
 var lastSnapshotSave time.Time
 
-func RefreshTracker(current models.ServerListResponse) []models.TrackingEvent {
+func RefreshTracker(current models.ServerListResponse, snapshot_interval_seconds int) []models.TrackingEvent {
 	now := time.Now()
 	var events []models.TrackingEvent
 
-	// Only save snapshot if 5 minutes have passed
-	if now.Sub(lastSnapshotSave) > 5*time.Minute {
-		fmt.Println("Saving serverlist snapshot to DB...")
+	// Only save snapshot if specified interval has passed
+	if now.Sub(lastSnapshotSave) > time.Duration(snapshot_interval_seconds)*time.Second {
+		log.Println("Saving serverlist snapshot to DB...")
 		snapshot := models.Snapshot{
 			Servers: current.List,
 			Time:    now,

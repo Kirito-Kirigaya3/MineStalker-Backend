@@ -20,11 +20,13 @@ import (
 )
 
 var isFirstScrape = true
+var snapshot_interval_seconds = 300 // 5 minutes default ( configurable via config )
 
-func StartScheduler() {
-	ticker := time.NewTicker(5 * time.Second)
+func StartScheduler(update_interval_seconds int, snapshot_interval_seconds_ int) {
+	ticker := time.NewTicker(time.Duration(update_interval_seconds) * time.Second)
 	defer ticker.Stop()
 
+	snapshot_interval_seconds = snapshot_interval_seconds_
 	log.Println("Scraper scheduler started, scraping every 5 minutes")
 	Scrape()
 
@@ -91,7 +93,7 @@ func Scrape() {
 
 	log.Println("Tracking player/server events...")
 
-	events := tracker.RefreshTracker(parsed)
+	events := tracker.RefreshTracker(parsed, snapshot_interval_seconds)
 	sortEventsByType(events)
 
 	log.Println("Committing changes to database...")

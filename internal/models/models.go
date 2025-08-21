@@ -56,8 +56,10 @@ type ServerTrackingAlert struct {
 	DiscordID     string
 }
 
-type BotConfig struct {
-	Token   string
-	AppID   string
-	GuildID string
+type Config struct {
+	Token            string
+	AppID            string
+	GuildID          string
+	UpdateInterval   int // Interval in seconds for periodic updates
+	SnapshotInterval int // Interval in seconds for snapshot updates
 }

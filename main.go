@@ -30,7 +30,7 @@ func main() {
 	}
 
 	// Start scraping job
-	go scraper.StartScheduler()
+	go scraper.StartScheduler(cfg.UpdateInterval, cfg.SnapshotInterval)
 
 	// Start the Discord bot
 

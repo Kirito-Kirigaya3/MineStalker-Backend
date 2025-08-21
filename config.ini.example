@@ -1,0 +1,4 @@
+# Bot configuration
+Token = YOUR_BOT_TOKEN
+AppID = DISCORD_BOT_APP_ID
+GuildID = GUILD_ID_WHERE_THE_BOT_RUNS

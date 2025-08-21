@@ -19,6 +19,7 @@ func LoadConfig(path string) (*models.Config, error) {
 		GuildID:          cfgFile.Section("").Key("GuildID").String(),
 		UpdateInterval:   cfgFile.Section("").Key("UpdateInterval").MustInt(5),
 		SnapshotInterval: cfgFile.Section("").Key("SnapshotInterval").MustInt(300),
+		LoggerWebhookUrl: cfgFile.Section("").Key("LoggerWebhookUrl").String(),
 	}
 
 	return cfg, nil

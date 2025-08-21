@@ -21,12 +21,14 @@ import (
 
 var isFirstScrape = true
 var snapshot_interval_seconds = 300 // 5 minutes default ( configurable via config )
+var logger_webhook_url string
 
-func StartScheduler(update_interval_seconds int, snapshot_interval_seconds_ int) {
+func StartScheduler(update_interval_seconds int, snapshot_interval_seconds_ int, logger_webhook_url_ string) {
 	ticker := time.NewTicker(time.Duration(update_interval_seconds) * time.Second)
 	defer ticker.Stop()
 
 	snapshot_interval_seconds = snapshot_interval_seconds_
+	logger_webhook_url = logger_webhook_url_
 	log.Println("Scraper scheduler started, scraping every 5 minutes")
 	Scrape()
 
@@ -51,7 +53,7 @@ type ServerListResponse struct {
 
 // Helper to send a formatted webhook
 func sendEvent(message string) {
-	api.SendWebhook("https://discord.com/api/webhooks/1407993761409142864/RrchikWMzGy-_JEFQ0t6pvLh0q_7EMBj0kWC1-ZQCR1415dSOeagfvtiDZ8HJvw6rZ4w", message)
+	api.SendWebhook(logger_webhook_url, message)
 }
 
 func Scrape() {

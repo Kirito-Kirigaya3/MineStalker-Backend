@@ -44,6 +44,7 @@ AppID = YOUR_APP_ID
 GuildID = YOUR_GUILD_ID
 UpdateInterval = 5
 SnapshotInterval = 300
+LoggerWebhookURL = LOGGER_WEBHOOK_URL
 ```
 
 3. **Run the server**

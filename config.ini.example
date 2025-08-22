@@ -4,3 +4,4 @@ AppID = DISCORD_BOT_APP_ID
 GuildID = GUILD_ID_WHERE_THE_BOT_RUNS
 UpdateInterval = 5
 SnapshotInterval = 300
+LoggerWebhookURL = LOGGER_WEBHOOK_URL

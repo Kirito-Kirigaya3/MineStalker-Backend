@@ -82,10 +82,10 @@ func SnapshotHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func SendWebhook(webhookURL, message string) error {
+func SendWebhook(webhookURL, message, username string) error {
 	payload := map[string]string{
 		"content":  message,
-		"username": "MineStalker", // show up as "MineStalker"
+		"username": username,
 	}
 
 	data, err := json.Marshal(payload)

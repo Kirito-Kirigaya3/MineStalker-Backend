@@ -14,12 +14,13 @@ func LoadConfig(path string) (*models.Config, error) {
 	}
 
 	cfg := &models.Config{
-		Token:            cfgFile.Section("").Key("Token").String(),
-		AppID:            cfgFile.Section("").Key("AppID").String(),
-		GuildID:          cfgFile.Section("").Key("GuildID").String(),
-		UpdateInterval:   cfgFile.Section("").Key("UpdateInterval").MustInt(5),
-		SnapshotInterval: cfgFile.Section("").Key("SnapshotInterval").MustInt(300),
-		LoggerWebhookUrl: cfgFile.Section("").Key("LoggerWebhookUrl").String(),
+		Token:                 cfgFile.Section("").Key("Token").String(),
+		AppID:                 cfgFile.Section("").Key("AppID").String(),
+		GuildID:               cfgFile.Section("").Key("GuildID").String(),
+		UpdateInterval:        cfgFile.Section("").Key("UpdateInterval").MustInt(5),
+		SnapshotInterval:      cfgFile.Section("").Key("SnapshotInterval").MustInt(300),
+		LoggerWebhookUrl:      cfgFile.Section("").Key("LoggerWebhookUrl").String(),
+		LoggerWebhookUsername: cfgFile.Section("").Key("LoggerWebhookUsername").String(),
 	}
 
 	return cfg, nil

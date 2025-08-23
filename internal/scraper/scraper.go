@@ -22,13 +22,15 @@ import (
 var isFirstScrape = true
 var snapshot_interval_seconds = 300 // 5 minutes default ( configurable via config )
 var logger_webhook_url string
+var logger_username string
 
-func StartScheduler(update_interval_seconds int, snapshot_interval_seconds_ int, logger_webhook_url_ string) {
+func StartScheduler(update_interval_seconds int, snapshot_interval_seconds_ int, logger_webhook_url_, logger_username_ string) {
 	ticker := time.NewTicker(time.Duration(update_interval_seconds) * time.Second)
 	defer ticker.Stop()
 
 	snapshot_interval_seconds = snapshot_interval_seconds_
 	logger_webhook_url = logger_webhook_url_
+	logger_username = logger_username_
 	log.Println("Scraper scheduler started, scraping every 5 minutes")
 	Scrape()
 
@@ -53,7 +55,7 @@ type ServerListResponse struct {
 
 // Helper to send a formatted webhook
 func sendEvent(message string) {
-	api.SendWebhook(logger_webhook_url, message)
+	api.SendWebhook(logger_webhook_url, message, logger_username)
 }
 
 func Scrape() {

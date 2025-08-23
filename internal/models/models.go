@@ -57,10 +57,11 @@ type ServerTrackingAlert struct {
 }
 
 type Config struct {
-	Token            string
-	AppID            string
-	GuildID          string
-	UpdateInterval   int    // Interval in seconds for periodic updates
-	SnapshotInterval int    // Interval in seconds for snapshot updates
-	LoggerWebhookUrl string // Webhook URL for logging events
+	Token                 string
+	AppID                 string
+	GuildID               string
+	UpdateInterval        int    // Interval in seconds for periodic updates
+	SnapshotInterval      int    // Interval in seconds for snapshot updates
+	LoggerWebhookUrl      string // Webhook URL for logging events
+	LoggerWebhookUsername string // Username to use when logging events via webhook url
 }

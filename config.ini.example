@@ -5,3 +5,4 @@ GuildID = GUILD_ID_WHERE_THE_BOT_RUNS
 UpdateInterval = 5
 SnapshotInterval = 300
 LoggerWebhookURL = LOGGER_WEBHOOK_URL
+LoggerWebhookUsername = USERNAME_TO_SHOW_AS_WHEN_LOGGING_VIA_WEBHOOK

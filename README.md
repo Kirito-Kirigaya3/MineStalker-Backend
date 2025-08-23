@@ -45,6 +45,7 @@ GuildID = YOUR_GUILD_ID
 UpdateInterval = 5
 SnapshotInterval = 300
 LoggerWebhookURL = LOGGER_WEBHOOK_URL
+LoggerWebhookUsername = USERNAME_TO_SHOW_AS_WHEN_LOGGING_VIA_WEBHOOK
 ```
 
 3. **Run the server**
@@ -76,7 +77,6 @@ The backend will start on `:8080`. The scraper and Discord bot run in the backgr
 * `/servertracker add <playername>` – Track a server
 * `/servertracker remove <playername>` – Stop tracking a server
 * `/servertracker list` – List all tracked servers
-
 
 * `/playerhistory <playername> <page>` – List all tracked activity of a specific player
 
